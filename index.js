@@ -14,7 +14,7 @@ app.get('/', (req, res) =>{
 })
 
 app.get('/games', (req, res) => {
-    db.all(`SELECT * FROM GAMES`, (err, rows) => {
+    db.all(`SELECT * FROM GAMES  WHERE price > $price`, {$price: 0}, (err, rows) => {
         res.json(rows)
     })
 
@@ -43,6 +43,13 @@ app.get('/genre', (req, res) => {
 
 app.get('/type', (req, res) => {
     db.all(`SELECT * FROM TYPE`, (err, rows) => {
+        res.json(rows)
+    })
+
+})
+
+app.get('/game_genre', (req, res) => {
+    db.all(`SELECT * FROM GAME_GENRE`, (err, rows) => {
         res.json(rows)
     })
 
