@@ -1,8 +1,11 @@
 const express = require("express");
 const sqlite3 = require("sqlite3");
+const bodyParser = require("body-parser");
 const db = new sqlite3.Database('./db/steam.db')
 
 var app = express();
+app.use(bp.urlencoded());
+app.use(bodyparser.json())
 
 
 app.listen(8000, () => {
@@ -54,3 +57,23 @@ app.get('/game_genre', (req, res) => {
     })
 
 })
+
+app.post('/games', (req, res)=> {
+    const data = req.body
+    const.request = `INSERT INTO GAMES VALUES(1, 2, 3, 4, 5, 6, 7, 8, 9)`
+    db.run(request, [
+        null, 
+        "${data.name}", 
+        "${data.developer}", 
+        "${data.type}", 
+        "${data.requirments}", 
+        "${data.price}",
+        "${data.category}", 
+        "${data.genre}", 
+        db.run(request, (err) => {
+           if (err){
+              res.json(err)
+           }
+     })
+})
+
