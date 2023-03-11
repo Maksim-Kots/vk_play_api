@@ -65,8 +65,8 @@ app.post('/games', (req, res)=> {
         ${data.name}, 
         ${data.price},
         ${data.type_id}, 
-        ${data.genre}, 
-        ${data.developer})`
+        ${data.genre_id}, 
+        ${data.developer_id})`
 
         console.log(request)
         db.run(request, (err) => {
@@ -76,4 +76,3 @@ app.post('/games', (req, res)=> {
             res.json('Запсись добавлена')
         })
      })
-
